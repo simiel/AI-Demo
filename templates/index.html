@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CUSTOMER PREDICTION API</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CUSTOMER VALUE PREDICTION - REGRESSION</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+             
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+    <div class="login">
+      <h1 class="mx-auto">Customer Value Prediction</h1>
+
+      <!-- Main Input For Receiving Query to our ML -->
+
+      <h1 class="mx-auto">Customer Details For {{customer_name}} ,</h1>
+
+
+      <form class="mx-auto" action="{{ url_for('predict')}}" method="post" class="w-200">
+        <label for="data1">NUMBER OF PURCHASES</label>
+        <input type="text" name="data1" placeholder="Frequency" required="required" value="{{f1}}"/>
+        <label for="data2">AGE</label>
+        <input type="text" name="data2" placeholder="Age in years" required="required"  value="{{f2}}"/>
+        <br>
+        <label for="data3">GENDER</label>
+        <input type="text" name="data3" placeholder="1-Female 2-Male" required="required"  value="{{f3}}"/>
+        <label for="data4">CATEGORY</label>
+        <input type="text" name="data4" placeholder="category" required="required"  value="{{f4}}"/>
+        <br>
+        <button type="submit" class="w-20 btn btn-primary">Predict</button>
+      </form>
+
+      <form class="mx-auto" action="{{ url_for('generate')}}" method="post" class="w-200">
+        <button type="submit">Get User</button>
+      </form>
+
+      <br />
+      <br />
+      <p class="mx-auto">{{ prediction_text }}</p>
+    </div>
+  </body>
+</html>
